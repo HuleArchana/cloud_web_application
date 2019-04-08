@@ -105,7 +105,7 @@
       </div>
     </div>
   </section>
-	
+  
   <!-- Portfolio Grid -->
   <section class="bg-light" id="portfolio">
     <div class="container">
@@ -506,14 +506,14 @@
             <div class="col-lg-8 mx-auto">
               <div class="modal-body">
                 <!-- Project Details Go Here -->
-				<h2 class="text-uppercase">Restaurant Finder</h2>
-				<p class="item-intro text-muted">Select Location of your choice</p>
-				<div id="contents">
-				<select id="city">
-			      <option value="Aurora">Aurora</option>
-				</select>
-				</div>
-				<p id="showData"></p>
+        <h2 class="text-uppercase">Restaurant Finder</h2>
+        <p class="item-intro text-muted">Select Location of your choice</p>
+        <div id="contents">
+        <select id="city">
+            <option value="Aurora">Aurora</option>
+        </select>
+        </div>
+        <p id="showData"></p>
                 
                 
                 <!--<img class="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="">-->
@@ -544,12 +544,12 @@
                 <!-- Project Details Go Here -->
                 <h2 class="text-uppercase">What people are saying</h2>
                 <p class="item-intro text-muted">Select a restaurant to know the most useful tips</p>
-				<div id="contents1">
-				<select id="restaurant">
-			      <option value="Weekender Cafe">Weekender Cafe</option>
-				</select>
-				</div>
-				<p id="showData1"></p>
+        <div id="contents1">
+        <select id="restaurant">
+            <option value="Weekender Cafe">Weekender Cafe</option>
+        </select>
+        </div>
+        <p id="showData1"></p>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fas fa-times"></i>
                   Close Project</button>
@@ -706,13 +706,13 @@
                 $("#showData").empty();
                 callAPI(this.value);
             });
-			
-			$('#restaurant').on('change', function() {
+      
+      $('#restaurant').on('change', function() {
                 $("#showData1").empty();
                 callAPI_restaurant(this.value);
             });
-			
-			
+      
+      
 
             function callAPI(city) {
                 $("#img").show();
@@ -724,8 +724,8 @@
                     alert(error);
                 });
             }
-			
-			function callAPI_restaurant(restaurant) {
+      
+      function callAPI_restaurant(restaurant) {
                 $("#img").show();
                 $("#contents1").hide();
                 $.get( "https://harilove.herokuapp.com/api/googlebigqueries/getData", { query: "SELECT distinct text,stars,compliment_count FROM Cloud.Restaurant where name='"+restaurant+"' order by compliment_count desc LIMIT 5"}).done(function(data) {
@@ -771,27 +771,27 @@
                 }
 
                 // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-				
-				if (identifier=="city") {
+        
+        if (identifier=="city") {
                 var divContainer = document.getElementById("showData");
                 divContainer.innerHTML = "";
                 divContainer.appendChild(table);
                 $("#img").hide();
                 $("#contents").show();
-				}
-				
-				if (identifier=="restaurant") {
+        }
+        
+        if (identifier=="restaurant") {
                 var divContainer = document.getElementById("showData1");
                 divContainer.innerHTML = "";
                 divContainer.appendChild(table);
                 $("#img").hide();
                 $("#contents1").show();
-				}
-				
+        }
+        
             }
-			callAPI_restaurant("Weekender Cafe");
+      callAPI_restaurant("Weekender Cafe");
             callAPI("Aurora");
-			
+      
         });
     </script>
   
